@@ -1,3 +1,4 @@
-import { Num } from './Num'
+import { register, getMap } from './lib/componentAPI/Register'
+import Render from './lib/dom/Render'
 
-export { Num }
+export { register, getMap, Render }
