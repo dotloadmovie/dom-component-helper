@@ -1,6 +1,6 @@
 {
-  "name": "example-typescript-package",
-  "version": "0.2.2",
+  "name": "dom-component-helper",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -11,15 +11,19 @@
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
     "build": "npm run build:cjs && npm run build:esm && npm run build:umd && npm run build:types",
+    "build:dev": "npm run build:esm-dev && npm run build:types-dev",
     "build:cjs": "node tools/cleanup cjs && tsc -p config/tsconfig.cjs.json",
     "build:esm": "node tools/cleanup esm && tsc -p config/tsconfig.esm.json",
+    "build:esm-dev": "node tools/cleanup esm && tsc -p config/tsconfig.esm.json --skipLibCheck",
     "build:umd": "node tools/cleanup umd && webpack --config config/webpack.config.js",
     "build:types": "node tools/cleanup types && tsc -p config/tsconfig.types.json",
+    "build:types-dev": "node   tools/cleanup types && tsc -p config/tsconfig.types.json --skipLibCheck",
     "clean": "node tools/cleanup",
     "package": "npm run build && npm pack",
     "test": "jest --no-cache --runInBand",
     "test:cov": "jest --coverage --no-cache --runInBand",
-    "addscope": "node tools/packagejson name @tomchen/example-typescript-package"
+    "addscope": "node tools/packagejson name @dotloadmovie/dom-component-helper",
+    "dev": "nodemon -e ts,js,tsx,json,jsx --watch src --exec npm run build:dev"
   },
   "publishConfig": {
     "access": "public"
@@ -40,15 +44,15 @@
     "esm",
     "umd"
   ],
-  "author": "Tom Chen <tomchen.org@gmail.com>",
+  "author": "Dave Tickle <dave@dotloadmovie.com>",
   "license": "MIT",
-  "homepage": "https://github.com/tomchen/example-typescript-package",
+  "homepage": "https://github.com/dotloadmovie/dom-component-helper",
   "repository": {
     "type": "git",
-    "url": "git@github.com:tomchen/example-typescript-package.git"
+    "url": "git@github.com:dotloadmovie/dom-component-helper.git"
   },
   "bugs": {
-    "url": "https://github.com/tomchen/example-typescript-package/issues"
+    "url": "https://github.com/dotloadmovie/dom-component-helper/issues"
   },
   "dependencies": {},
   "devDependencies": {
