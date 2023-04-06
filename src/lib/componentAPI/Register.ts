@@ -1,12 +1,14 @@
-interface ComponentMap {
-  [key: string]: (element: Element) => void
+import { BindingProps } from '../init/Init'
+
+export interface ComponentMap {
+  [key: string]: (props: BindingProps) => void
 }
 
 let map: ComponentMap = {}
 
 const register = (
   name: string,
-  component: (element: Element) => void
+  component: (props: BindingProps) => void
 ): ComponentMap => {
   const newMap = { ...map }
   newMap[name] = component
